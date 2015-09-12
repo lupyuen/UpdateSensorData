@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Published:1edd050d-37f2-4edc-b53a-118283df4f1d-->
+<!--Created:cbbc9d22-5cf7-4e4c-8ee9-42a772aae58a-->
+<OfficeApp xsi:type="TaskPaneApp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/office/appforoffice/1.0">
+  <Id>7820dd1b-c7c1-4f76-a7c1-34335fa18eeb</Id>
+  <Version>1.0.0.1</Version>
+  <ProviderName>Lup Yuen Lee</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Update Sensor Data" />
+  <Description DefaultValue="Update sensor data in the spreadsheet with values consolidated by AzureIoTService from various sensors" />
+  <Capabilities>
+    <Capability Name="Workbook" />
+    <Capability Name="Project" />
+    <Capability Name="Document" />
+    <Capability Name="Presentation" />
+  </Capabilities>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://azureiotservice.azurewebsites.net/UpdateSensorData.zip/App/Home/Home.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>
