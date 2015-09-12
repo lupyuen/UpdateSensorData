@@ -5,7 +5,7 @@
 //  The next row number to be populated.
 var nextRow = 0;
 
-//  The values to be populated in the new row, e.g. ["2015-09-11T16:23:42", 28.5, 185]
+//  The values to be populated in the new row, e.g. ["2015-09-11 16:23:42", 28.5, 185]
 var newRow = null;
 
 (function () {
@@ -110,7 +110,7 @@ var newRow = null;
 		//  The script will return something like
 		//  newRow = ["2015-09-11T16:23:42", 28.5, 185];
 		//  Must use HTTPS because the calling HTML page (Excel Online) is also HTTPS.
-		//  TODO: Send the column headers to the service.
+		//  TODO: Send the group name and column headers to the service.
 		newScript.src = 'https://azureiotservice.azurewebsites.net/Test.aspx';
 		headID.appendChild(newScript);		
 	}
@@ -144,6 +144,8 @@ var newRow = null;
         });
 	}
 	
+})();
+
 	/*
     // we use a queue for applying the cell formatting because of Excel online limitations 
     // which restrict cell formatting calls to 100 cells or less 
@@ -188,5 +190,3 @@ var newRow = null;
 		);
     }
 	*/
-	
-})();
