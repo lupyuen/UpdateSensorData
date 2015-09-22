@@ -2,6 +2,9 @@
 // global app
 //  Published at https://azureiotservice.azurewebsites.net/UpdateSensorData.zip
 
+//  The unique ID of the group.
+var groupID = 1;
+
 //  The next row number to be populated.
 var nextRow = 0;
 
@@ -110,8 +113,7 @@ var newRow = null;
 		//  The script will return something like
 		//  newRow = ["2015-09-11T16:23:42", 28.5, 185];
 		//  Must use HTTPS because the calling HTML page (Excel Online) is also HTTPS.
-		//  TODO: Send the group name and column headers to the service.
-		newScript.src = 'https://azureiotservice.azurewebsites.net/Test.aspx';
+		newScript.src = 'https://AzureIoTProxy.azurewebsites.net/GetSensorData.aspx?Group=' + groupID + '&fields=Timestamp,Temperature,LightLevel';
 		headID.appendChild(newScript);		
 	}
 	
@@ -145,48 +147,3 @@ var newRow = null;
 	}
 	
 })();
-
-	/*
-    // we use a queue for applying the cell formatting because of Excel online limitations 
-    // which restrict cell formatting calls to 100 cells or less 
-    rangeFormatQueue = []; 
-    rangeFormatQueue.push({ cells: Office.Table.All, format: { width: "auto fit" } }); 
-    for (var j = 0; j < myTable.rows.length; j++) { 
-        rangeFormatQueue.push({ cells: { row: j, column: 1 }, format: { numberFormat: dateFormat } }); 
-        rangeFormatQueue.push({ cells: { row: j, column: 3 }, format: { fontColor: myTable.rows[j][3] } }); 
-    } 
-	*/
-
-	/*
-    rangeFormatQueue = []; 
-    rangeFormatQueue.push({ cells: Office.Table.All, format: { width: "auto fit" } }); 
-    for (var j = 0; j < rows.length; j++) { 
-        rangeFormatQueue.push({ cells: { row: j + rowOffset, column: 1 }, format: { numberFormat: "dd-mmm-yyyy" } }); 
-        rangeFormatQueue.push({ cells: { row: j + rowOffset, column: 3 }, format: { fontColor: rows[j][3] } }); 
-    } 
-	*/
-
-	/*
-    // Reads data from current document selection and displays a notification
-    function NOTUSED_getDataFromSelection() {
-		//Write text to the current user selection
-		Office.context.document.setSelectedDataAsync(
-		  nextRow++, 
-		  function (asyncResult) {
-		    if (asyncResult.status == "failed") {
-		      app.showNotification("Action failed with error: " + asyncResult.error.message);
-		    } else {
-		      app.showNotification("Success! Click the Next button to move on.");
-		  }
-		});
-        Office.context.document.getSelectedDataAsync(Office.CoercionType.Text,
-			function (result) {
-			    if (result.status === Office.AsyncResultStatus.Succeeded) {
-			        app.showNotification('The selected text is:', '"' + result.value + '"');
-			    } else {
-			        app.showNotification('Error:', result.error.message);
-			    }
-			}
-		);
-    }
-	*/
